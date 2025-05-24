@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shredder Camo Colors</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(to bottom, #ffffff, #aee3f9);
+      margin: 0;
+      padding: 20px;
+      color: #333;
+    }
+    h1 {
+      text-align: center;
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+    }
+    p.instruction {
+      text-align: center;
+      margin-bottom: 40px;
+      font-size: 1rem;
+      color: #555;
+    }
+    .palette {
+    
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .color-card {
+      display: flex;
+      align-items: center;
+      background: #ffffff;
+      border-radius: 16px;
+      box-shadow: 0 6px 14px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .color-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 20px rgba(0, 0, 0, 0.15);
+    }
+    .color-swatch {
+      width: 140px;
+      height: 140px;
+      flex-shrink: 0;
+      cursor: pointer;
+      position: relative;
+    }
+    .color-swatch::before {
+      content: "Click to copy";
+      position: absolute;
+      bottom: 8px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(0, 0, 0, 0.75);
+      color: #fff;
+      font-size: 0.85rem;
+      padding: 4px 10px;
+      border-radius: 8px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease, transform 0.3s ease;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+      z-index: 1;
+    }
+    .color-swatch:hover::before {
+      opacity: 1;
+      transform: translateX(-50%) translateY(-4px);
+    }
+    .tooltip-message {
+      position: absolute;
+      top: 8px;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: #222;
+      color: #fff;
+      font-size: 0.85rem;
+      padding: 4px 8px;
+      border-radius: 6px;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      pointer-events: none;
+      z-index: 2;
+    }
+    .tooltip-message.show {
+      opacity: 1;
+      
+    }
+    .color-info {
+      padding: 20px;
+    }
+    .color-info h2 {
+      margin-top: 0;
+      font-size: 1.5rem;
+      margin-bottom: 10px;
+    }
+    .color-info p {
+      margin: 6px 0;
+      line-height: 1.5;
+    }
+    p.centered
+{
+  text-align:center;
+}
+  </style>
+  <script>
+    function copyHex(hex, el) {
+      navigator.clipboard.writeText(hex).then(() => {
+        const existingTooltip = el.querySelector('.tooltip-message');
+        if (existingTooltip) existingTooltip.remove();
+
+        const tooltip = document.createElement('div');
+        tooltip.className = 'tooltip-message show';
+        tooltip.textContent = 'Copied!';
+        el.appendChild(tooltip);
+
+        setTimeout(() => {
+          tooltip.classList.remove('show');
+          tooltip.remove();
+        }, 1500);
+      });
+    }
+  </script>
+</head>
+<body>
+  <h1>Shredder Camo</h1>
+  <p class="instruction">Click any color to copy its hex code ! ! !</p>
+  <div class="palette">
+    <div class="color-card">
+      <div class="color-swatch" style="background: #89cde8;" onclick="copyHex('#89cde8', this)"></div>
+      <div class="color-info">
+        <h2>Top Sky</h2>
+        <p><strong>Hex:</strong> #89cde8</p>
+        <p><strong>RGB:</strong> (137, 205, 232)</p>
+        <p>For shredders that will be fighting high in the sky, like the top of the skybox stuff. Other than that, its not useful.</p>
+      </div>
+    </div>
+    <div class="color-card">
+      <div class="color-swatch" style="background: #aee3f9;" onclick="copyHex('#aee3f9', this)"></div>
+      <div class="color-info">
+        <h2>Mid Sky</h2>
+        <p><strong>Hex:</strong> #aee3f9</p>
+        <p><strong>RGB:</strong> (174, 227, 249)</p>
+        <p>A bit whiter version of the previous, this is good for if you want to be a bit lower and still have good camo. (Still not good tho)</p>
+      </div>
+    </div>
+    <div class="color-card">
+      <div class="color-swatch" style="background: #c4e4f2;" onclick="copyHex('#c4e4f2', this)"></div>
+      <div class="color-info">
+        <h2>Low Fade</h2>
+        <p><strong>Hex:</strong> #c4e4f2</p>
+        <p><strong>RGB:</strong> (196, 228, 242)</p>
+        <p>The color between cloud and sky, making it good for general purpose and shredders fighting at a decent height.</p>
+      </div>
+    </div>
+    <div class="color-card">
+      <div class="color-swatch" style="background: #dceef4;" onclick="copyHex('#dceef4', this)"></div>
+      <div class="color-info">
+        <h2>Horizon White</h2>
+        <p><strong>Hex:</strong> #dceef4</p>
+        <p><strong>RGB:</strong> (220, 238, 244)</p>
+        <p>In my opinion, the best camo for most shredders. This is the color between white and light blue, making it the perfect horizon camo. (Most shredders fight at that level)</p>
+      </div>
+    </div>
+    <div class="color-card">
+      <div class="color-swatch" style="background: #f4fafa;" onclick="copyHex('#f4fafa', this)"></div>
+      <div class="color-info">
+        <h2>Duckless Feathers</h2>
+        <p><strong>Hex:</strong> #f4fafa</p>
+        <p><strong>RGB:</strong> (244, 250, 250)</p>
+        <p>A tiny bit bluer than white, this is a off-white that I think is better than just plain white for camo.</p>
+      </div>
+    </div>
+  </div>
+ <p class="centered">I love chatgpt ❤</p>
+</body>
+</html>
